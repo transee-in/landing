@@ -4,9 +4,23 @@
  */
 
 @charset 'utf-8';
+@mixin block-center($width, $height) {
+  width: $width;
+  height: $height;
+  box-sizing: border-box;
+
+  position: absolute;
+  top: 50%; left: 50%;
+  margin: {
+    top: -($height / 2);
+    left: -($width / 2);
+  }
+}
 
 html, body {
   height: 100%;
+  color: #fff;
+  cursor: default;
 }
 
 body {
@@ -20,8 +34,19 @@ body {
   background-attachment: fixed;
 }
 
-header {
+a {
   color: #fff;
+  text-decoration: underline;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+#index_page {
+  .container {
+    @include block-center(1000px, 600px);
+  }
 
   .logo {
     width: 50px;
@@ -30,67 +55,126 @@ header {
 
   h1 {
     margin: 5px 0;
-    font-size: 44px;
+    font-size: 36px;
     font-weight: 300;
   }
 
-  .wp-store {
+  h2 {
+    font-size: 44px;
+    font-weight: 100;
+    margin: 0;
+  }
+
+  nav {
+    margin-top: 40px;
+    font-size: 14px;
+
+    a {
+      opacity: .7;
+      margin-right: 15px;
+    }
+  }
+
+  .downloads {
     margin-top: 30px;
+
+    .wp-store {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    span {
+      margin-left: 7px;
+    }
+  }
+
+  .wp-app {
+    background: url('/images/wp_app.png');
+    width: 300px;
+    height: 555px;
+  }
+
+  .left-side, .right-side {
+    float: left;
+  }
+
+  .left-side {
+    width: 70%;
+    height: 240px;
+    margin-top: 150px;
+  }
+
+  .right-side {
+    width: 30%;
+    margin-top: 25px;
+  }
+}
+
+#how_page {
+  line-height: 28px;
+
+  .container {
+    @include block-center(500px, 350px);
+  }
+
+  h1 {
+    font-size: 44px;
+    text-align: center;
+    margin: 10px 0 60px 0;
+  }
+
+  nav {
+    text-align: center;
   }
 }
 
 // Simple grids
 
-.section {
+section {
   width: 100%;
   height: 100%;
   position: relative;
-}
-
-.container {
-  width: 800px;
-  height: 400px;
-  box-sizing: border-box;
-
-  position: absolute;
-  top: 50%; left: 50%;
-  margin: -200px 0 0 -400px;
-}
-
-.half {
-  width: 50%;
-  float: left;
+  overflow: hidden;
 }
 
 // Mobile
 
 @media screen and (max-width: 800px) {
-  body {
-    background-image: url('/images/bg_pure.jpg');
-    background-position: right bottom;
+  #index_page, #how_page {
+    .container {
+      position: relative;
+      width: 100%; height: auto;
+      top: 0; left: 0;
+      margin: 50px 0;
+      padding: 0 20px;
+    }
   }
 
-  .container {
-    width: 380px;
-    height: 190px;
-    margin: -95px 0 0 -190px;
+  #index_page {
+    h1 {
+      font-size: 24px;
+      margin-bottom: 40px;
+    }
+
+    h2 {
+      font-size: 40px;
+      margin-bottom: 60px;
+    }
+
+    .left-side {
+      width: 100%; height: auto;
+      float: none;
+      margin: 0;
+    }
+
+    .right-side {
+      display: none;
+    }
   }
 
-  .half {
-    width: 100%;
-    float: none;
-  }
-
-  .hide-on-mobile {
-    display: none;
-  }
-}
-
-@media screen and (max-width: 400px) {
-  .container {
-    left: 0;
-    width: 100%;
-    padding: 15px;
-    margin-left: 0;
+  #how_page {
+    h1 {
+      font-size: 32px;
+    }
   }
 }
