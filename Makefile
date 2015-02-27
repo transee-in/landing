@@ -1,3 +1,5 @@
+.PHONY: deploy build
+
 deploy:
 	@ssh transee "cd ~/apps/landing && git pull && make build"
 
