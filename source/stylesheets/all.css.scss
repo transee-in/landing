@@ -1,6 +1,7 @@
 /**
  *= require lib/normalize
  *= require wp_store
+ *= require app_screenshots
  */
 
 @charset 'utf-8';
@@ -99,13 +100,13 @@ a {
   }
 
   .left-side {
-    width: 70%;
+    width: 60%;
     height: 240px;
     margin-top: 150px;
   }
 
   .right-side {
-    width: 30%;
+    width: 40%;
     margin-top: 25px;
   }
 }
